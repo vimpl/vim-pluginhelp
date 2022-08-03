@@ -1,4 +1,4 @@
-let s:mode_order = {'n':0, 'i':1, 'c':2, 'v':3, 's':4, 'o':5, 't':6, 'l':7}
+let s:mode_order = {'n':0, 'i':1, 'c':2, 'x':3, 's':4, 'o':5, 't':6, 'l':7}
 
 " This requires hupfdule/log.vim
 silent! let s:log = log#getLogger(expand('<sfile>:t'))
@@ -223,8 +223,8 @@ function! s:parse_mappings(mappings) abort
         if mapping['mode'] =~# '^\s*$'
           let mapping['mode'] = 'nvso'
         endif
-        " Replace an 'x' mark with 'vs' (for visual and select mode)
-        let mapping['mode'] = substitute(mapping['mode'], 'x', 'vs', '')
+        " Replace a 'v' mark with 'xs' (for visual and select mode)
+        let mapping['mode'] = substitute(mapping['mode'], 'v', 'xs', '')
         " Replace an exclamation mark with the actual modes
         let mapping['mode'] = substitute(mapping['mode'], '!', 'ic', '')
         " Remove all remaining spaces
